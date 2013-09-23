@@ -1,0 +1,112 @@
+body {
+	background-image:url('../img/tree.png');
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	text-shadow: 1px 1px 0px #25135c;
+}
+
+.mainNav li {
+	background: rgba(200, 255, 255, 0.25) !important;
+}
+
+.imgLi {
+	display: inline-table !important; 
+	max-width: 100%;
+}
+
+#currentWeather {
+	background: rgba(200, 255, 255, 0.43) !important;
+	border: 1px solid black;
+	padding: 3%;
+}
+
+#weather {
+	text-align: center;
+	font-family: sans-serif;
+	font-size: large;
+	font-weight: bold;
+	text-shadow: 1px 1px 0px #25135c;
+}
+.research {
+	background: rgba(200, 255, 255, 0.50);
+}
+
+li:first-child{
+	background: rgba(200, 255, 255, 0.80) !important;
+}
+
+
+/* For portrait layouts only */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait) {
+	body {background-image:url('../img/tree.png') !important};
+	.ui-page {
+		background: url('../img/tree.png') no-repeat;
+		max-width: 100%;
+		text-shadow: 1px 1px 0px #25135c;
+	}
+	
+	.mainNav li {
+	background: rgba(200, 255, 255, 0.25) !important;
+	}
+
+	.imgLi {
+		display: inline-table !important; 
+		max-width: 100%;
+	}
+
+	#currentWeather {
+		background: rgba(200, 255, 255, 0.43) !important;
+		border: 1px solid black;
+		padding: 3%;
+	}
+
+	#weather {
+		text-align: center;
+		font-family: sans-serif;
+		font-size: large;
+		font-weight: bold;
+		text-shadow: 1px 1px 0px #25135c;
+	}
+	
+	li:first-child{
+		background: rgba(200, 255, 255, 0.80) !important;
+	}	
+}
+
+/* For landscape layouts only */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:landscape) {
+	body {background-image:url('../img/shore.jpg') !important};
+	.ui-page {
+		background: url('../img/shore.jpg') no-repeat;
+		max-width: 100%;
+		text-shadow: 1px 1px 0px #25135c;
+	}
+	.mainNav li {
+		background: rgba(200, 255, 255, 0.25) !important;
+	}
+	
+	.imgLi {
+		display: inline-table !important; 
+		max-width: 100%;
+	}
+
+	#currentWeather {
+		background: rgba(200, 255, 255, 0.43) !important;
+		border: 1px solid black;
+		padding: 3%;
+		}
+
+	#weather {
+		text-align: center;
+		font-family: sans-serif;
+		font-size: large;
+		font-weight: bold;
+		text-shadow: 1px 1px 0px #25135c;
+	}
+	
+	li:first-child{
+		background: rgba(200, 255, 255, 0.80) !important;
+	}
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!--
+    David Jones
+    Full Sail University
+    Advanced Visual Frameworks 1309
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Demo App</title>
+        <meta name="description" content="AVF 1309 Demo App - Full Sail University" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css"/> 
+        <link rel="stylesheet" type="text/css" href="css/styles.css" />    
+        <script src="js/libs/modernizr.custom.min.js"></script>
+    </head>
+    <body>
+    	<!-- Main Div -->
+        <div id="main">
+        	<!-- Home Page -->
+            <section id="home" data-role="page" style="background:transparent;">
+                <div data-role="header" data-position="fixed">
+                    <h1>Demo App</h1>
+                </div>
+                <section data-role="content">
+                    <ul data-role="listview" data-ajax="false" data-inset="true" class='mainNav' data-theme="a">
+                        <li data-role="list-divider">Native Features</li>
+                        <li><a href="#camera">Camera</a></li>
+                        <li><a href="#notification">Notifications</a></li>
+                        <li><a href="#geolocate">Geolocation</a></li>
+                        <li><a href="#contacts">Contacts</a></li>
+                    </ul>
+                    <ul data-role="listview" data-ajax="false" data-inset="true" class='mainNav' data-theme="a">
+                        <li data-role="list-divider">Data API's</li>
+                        <li><a href="#weather">Weather</a></li>
+                        <li><a href="#insta">Instagram</a></li>
+                    </ul>
+                    <ul data-role="listview" data-ajax="false" data-inset="true" class='mainNav' data-theme="a">
+                        <li data-role="list-divider">Research</li>
+                        <li><a href="#week1">Week One: Industry Research and Project Intent</a></li>
+                        <li><a href="#week2">Week Two: Research</a></li>
+                        <li><a href="">Week Three: Research</a></li>
+                    </ul>
+                </section>
+            </section> <!-- End of Home section -->
+            <!-- Instagram Page -->
+            <section id="insta" data-role="page" style="background:transparent;">
+	            <div data-role="header" data-position="fixed" data-add-back-btn="true">
+		            <a href="#" data-rel="back">Back</a><h1>Instagram API</h1>
+	            </div>
+	            <section data-role="content">
+			        <ul id="dataOut">
+		            </ul>
+	            </section> <!-- End of content -->
+            </section> <!-- End of Insta section -->
+            <!-- Weather Page -->
+            <section id="weather" data-role="page" style="background:transparent;">
+	            <div data-role="header" data-position="fixed" data-add-back-btn="true">
+		            <a href="#" data-rel="back">Back</a><h1>Weather API</h1>
+	            </div>
+	            <section data-role="content">
+		            <ul id="currentWeather" data-role="listview" data-inset="true" data-theme="d"></ul>
+	            </section> <!-- End of content -->
+            </section> <!-- End of Weather section -->
+            <!-- Camera Features -->
+            <section id="camera" data-role="page" style="background:transparent;">
+            	<div data-role="header" data-position="fixed" data-add-back-btn="true">
+                    <a href="#" data-rel="back">Back</a><h1>Camera</h1>
+                </div>
+	            <section data-role="content">
+		            <button onclick="takePic();">Take a Pic!</button> <br>
+				    <button onclick="shootAndCrop();">Take a Pic and Crop It!</button> <br>
+				    <img style="display:none;width:500px;height:500px;" id="preview" src="" />
+				    <p id="viewData" style="display:none;"></p>
+	            </section>
+            </section> <!-- End of camera section -->
+            <!-- Geolocation Features -->
+            <section id="geolocate" data-role="page" style="background:transparent;">
+	            <div data-role="header" data-position="fixed" data-add-back-btn="true">
+                    <a href="#" data-rel="back">Back</a><h1>Geolocate</h1>
+                </div>
+                <section data-role="content">
+                	<ul data-role="listview" data-ajax="false" data-inset="true" class='geoDisplay' data-theme="c">
+                        <li data-role="list-divider">Current Geolocation</li>
+                        <li><p id="geolocation">Loading Geolocation Data....</p></li>
+                    </ul> 
+                </section> <!-- End of geolocate content -->
+            </section> <!-- End of Geolocation Features -->
+            <!-- Notification Page -->
+            <section id="notification" data-role="page" style="background:transparent;">
+            	<div data-role="header" data-position="fixed" data-add-back-btn="true">
+                    <a href="#" data-rel="back">Back</a><h1>Notifications</h1>
+                </div>
+	            <section data-role="content">
+	            	<div data-role="controlgroup">
+					    <a href="#" onclick="visualAlert(); return false;" data-role="button">Show An Alert Message</a>
+					    <a href="#" onclick="sounds(); return false;" data-role="button">Make Some Noise</a>
+					   <!-- <a href="#" onclick="shakes(); return false;" data-role="button">Shake Your MoneyMaker</a> -->
+					</div>
+	            </section> <!-- End of content for notification page -->
+            </section> <!-- End of Notification Page -->
+            <!-- Contacts Page -->
+            <section id="contacts" data-role="page" style="background:transparent;">
+	            <div data-role="header" data-position="fixed" data-add-back-btn="true">
+                    <a href="#" data-rel="back">Back</a><h1>Contacts</h1>
+                </div>
+                <section data-role="content">
+	                <form>
+		                <section data-role="fieldcontain">
+			                <label for="firstName">First Name:</label>
+			                <input type="text" name="firstName" id="firstName" placeholder="First Name" />
+		                </section>
+		                <section data-role="fieldcontain">
+			                <label for="lastName">Last Name:</label>
+			                <input type="text" name="lastName" id="lastName" placeholder="Last Name" />
+		                </section>
+		                <section data-role="fieldcontain">
+			                <label for="phoneNumber">Phone Number:</label>
+			                <input type="number" name="phoneNumber" id="phoneNumber" placeholder="1234567890" />
+		                </section>
+		                <section data-role="fieldcontain">
+			                <label for="email">eMail: </label>
+			                <input type="email" name="email" id="email" placeholder="xxxxx@xxxx.com" />
+		                </section>
+	                </form>
+	                <div>
+		                <a href="#" data-role="button" id="saveContact">Add Contact</a>
+	                </div>
+                </section> <!-- End of Content -->
+            </section> <!-- End of Contacts Page -->           
+            <!-- Week 1 Research -->
+            <section id="week1" data-role="page" style="background:transparent;">
+                <div data-role="header" data-position="fixed" data-add-back-btn="true">
+                    <a href="#" data-rel="back">Back</a><h1>Week 1:Research and Intent</h1>
+                </div>
+                <div data-role="collapsible" class="research">
+	                <h4>Industry Research and Project Intent</h4>
+	                <p><strong>Less obvious perks of using 'live' data resources include logins and payments. How could Twitter be used in these two scenarios?</strong></p>
+	                <p>Twitter accounts could be linked with other accounts as a verified form of identity. Linking social media accounts such as Twitter with other logins and payment accounts creates an ease of use, and on over all more simplistic way to manage several different accounts.  I personally log into several different websites and forums with my Facebook profile.  It is definitely easier to manage one login and password.  Security plays a big role in the matter, and linking a Twitter account would add that extra layer of security over that particular site.</p>
+	                <p><strong>Visit Programmableweb.com and search for JSON-P data sources. Why would we need JSON-P, specifically?</strong></p>
+	                <p>JSON with padding allows us to request data from a server located in a different domain than the one the application is located in.  This is typically not allowed due to the same origin policy.  The data obtained is in the form of JavaScript code and is evaluated by a JavaScript interpreter, eliminating the need for a JSON parser.</p>
+	                <p><strong>Based on the JSON-P search results: what data resource(s) do you think might pair well with which types of Native device features?</strong></p>
+	                <ul>
+		                <li>Camera - Social Media sites; forums; auction sites.</li>
+		                <li>Geolocation - Adventure tracking sites; LoJack; Urbanspoon</li>
+		                <li>Contacts - iCloud; Lookout.com</li>
+	                </ul>
+	                <p><strong>Please describe any design and functionality intentions you may have for your Demo app components this month.</strong></p>
+	                <p>I've been thinking about this quite a bit.  As of right now, I would definitely like to add Fantasy Football functionality to track my Fantasy Football League and team this season.  I'd like to pull league messages and updates down from Fox as well as player information 
+	                	and scores. Another idea is to create an exercise app with weather information for jogging, gym locations nearby, and the ability to upload pictures of workouts and results.</p>
+					<p><strong>Briefly describe some past 'lessons learned' regarding workflow as it relates to research, design, development, etc.</strong></p>
+					<p>One major lesson I have learned has to do with time management.  We live in a busy world, and I'm sure all of us have responsibilities outside of school.  It is important to maintain a good schedule and try to lay out a 
+						good plan on when you'll have time to work on projects. Research is key when developing, and laying out a plan for anything that you do.  It's also a good idea to get opinions from your peers and test markets targeted for your applications.e</p>
+	            </div>
+            </section> <!-- End of week1 -->
+            <!-- Week 2 Research -->
+            <section id="week2" data-role="page" style="background:transparent;">
+                <div data-role="header" data-position="fixed" data-add-back-btn="true">
+                    <a href="#" data-rel="back">Back</a><h1>Week 2:Accessibility</h1>
+                </div>
+                <div data-role="collapsible" class="research">
+	                <h4>Accessibility</h4>
+	                <p><strong>What are some of the ways that you could change your HTML on your Demo app to be more accessible? (Remember, you can use the Section tag with jQuery, for instance)</strong></p>
+	                <p>There are several different things that can be done to the HTML to make it more accessible.  One thing would be to adjust the colors to be more friendly to those that suffer from color blindness.  Another thing that could be done is to add contextual links for those that use screen readers.  Alternative content is also a good idea (ie. large print; symbols; or simpler language). Alt text can also be added to be read aloud to the user, and for search engines to store info about a page.</p>
+	                <p><strong>Visit a video service on the web (like YouTube) and search for "Screen Reader Demo" and "Mobile Screen Reader" - what are some of the common frustrations (or common support mechanisms) that you see among the examples that are given - how could you fix them (or use them)?</strong></p>
+	                <p>Several issues seem to arise with these types of accessibility features.  Many seem a bit cumbersome to learn and use, and seem to have many problems fully navigating pages.  Linear navigation also seems to be a problem.  Obviously, if HTML isn't marked up correctly, screen readers will have trouble, and may be incomprehensible on certain website or mobile sites.
+		               Making sure that HTML is properly formatted and written correctly will help with screen reading. </p>
+	                <p><strong>Devices: Please list two devices (and some of their features) that are made specifically to support Accessibility.</strong></p>
+	                <ul>
+		                <li>Kindle Fire HD - Text-to-Speech; Voice Guide; Explore by Touch; Orientation Lock</li>
+		                <li>Samsung Galaxy Tab - Speak passwords; TalkBack; Text-to-speech; Enchanced Web accessibility</li>
+	                </ul>
+	                <p><strong>Mobile Apps: Please list two apps (either Android or iOS, or both) that are made specifically to support Accessibility.</strong></p>
+	                <p>I've been thinking about this quite a bit.  As of right now, I would definitely like to add Fantasy Football functionality to track my Fantasy Football League and team this season.  I'd like to pull league messages and updates down from Fox as well as player information 
+	                	and scores. Another idea is to create an exercise app with weather information for jogging, gym locations nearby, and the ability to upload pictures of workouts and results.</p>
+					<p><strong>Briefly describe some past 'lessons learned' regarding workflow as it relates to research, design, development, etc.</strong></p>
+					<ul>
+		                <li>LookTel Money Reader - Using the camera on the iPhone, this application instantly tells the user what denomination of paper money they are holding.  The developer is also working on using this technology in other ways such as reading labels.</li>
+		                <li>Light Detector - This application will help detect a light that is left on, and also helps to locate windows and exits.</li>
+	                </ul>
+	            </div>
+            </section> <!-- End of week2 -->
+        </div> <!-- End of main div -->
+        <!-- Linking javascript files -->
+        <!-- <script type="text/javascript" src="phonegap.js"></script> -->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.3.1.min.js"></script>
+        <script type="text/javascript" src="js/libs/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </body>
+</html>
