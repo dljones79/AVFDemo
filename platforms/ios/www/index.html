@@ -36,12 +36,17 @@
                         <li><a href="#weather">Weather</a></li>
                         <li><a href="#insta">Instagram</a></li>
                     </ul>
+                    <ul data-role="listview" data-ajax="false" data-inset="true" class="mainNav" data-theme="a">
+	                    <li data-role="list-divider">Mash-Ups</li>
+	                    <li><a href="#weatherByLoc">Weather by Geolocation</a></li>
+                    </ul>
                     <ul data-role="listview" data-ajax="false" data-inset="true" class='mainNav' data-theme="a">
                         <li data-role="list-divider">Research</li>
                         <li><a href="#week1">Week One: Industry Research and Project Intent</a></li>
                         <li><a href="#week2">Week Two: Research</a></li>
                         <li><a href="">Week Three: Research</a></li>
                     </ul>
+                    
                 </section>
             </section> <!-- End of Home section -->
             <!-- Instagram Page -->
@@ -128,7 +133,31 @@
 		                <a href="#" data-role="button" id="saveContact">Add Contact</a>
 	                </div>
                 </section> <!-- End of Content -->
-            </section> <!-- End of Contacts Page -->           
+            </section> <!-- End of Contacts Page -->  
+            
+            
+            <!-- Weather Page -->
+
+		<section id="weatherByLoc" data-role="page" style="background:transparent;">
+			<div data-role="header" data-position="fixed" data-add-back-btn="true">
+				<a href="#" data-rel="back">Back</a><h1>Weather & Geolocation</h1>
+			</div>
+			<section data-role="content" id="weatherData">
+				<ul id="weatherMain"></ul>
+			
+				<ul id="tempMain"></ul>
+				<div class="ui-grid-a ui-responsive" id="localVars"></div>
+				<ul id="radarImage"></ul>
+			</section>
+		</section>
+            
+            
+            
+            
+            
+            
+            
+                     
             <!-- Week 1 Research -->
             <section id="week1" data-role="page" style="background:transparent;">
                 <div data-role="header" data-position="fixed" data-add-back-btn="true">
