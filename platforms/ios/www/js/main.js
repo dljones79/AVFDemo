@@ -14,8 +14,8 @@ function onDeviceReady() {
 		pictureSource = navigator.camera.PictureSourceType;
         destinationType = navigator.camera.DestinationType;
         $("#geolocate").on("pageinit", displayLocation);
-        $("#saveContact").on("click", saveContact); //Calls for the Contacts Function
-     
+        $("#saveContact").on("click", saveContact);
+        $("#weatherByLoc").on("pageinit", weatherLoad);
 }; // phonegap deviceready
 
 // Function to get pictures from Instagram API
@@ -183,4 +183,74 @@ var onGoodSave = function(newContact){
 //On Failed Save
 var onBadSave = function(conError){
 	alert("Error = " + conError.code);
+};
+
+//////////////
+//Runs my Weather API and Displays by Getting Users GeoLocation then using Ajax Calls finds local code for location and then displays information/radar
+var weatherLoad = function(){
+	navigator.geolocation.getCurrentPosition(weatherByLoc, onGeoFailure);
+};
+
+var weatherByLoc = function(currentLocation){
+
+	var latitude = currentLocation.coords.latitude; 
+	var longitude = currentLocation.coords.longitude;
+
+	$.ajax({
+
+		url: "http://api.wunderground.com/api/5e635afafbd17b86/geolookup/q/" + latitude + "," + longitude + ".json",
+		dataType: "jsonp",
+		success: function(localWeatherData){
+
+			var nearbyStation = localWeatherData.location.l;
+
+			var localData = "http://api.wunderground.com/api/5e635afafbd17b86/conditions" + nearbyStation + ".json";
+			var radar = "http://api.wunderground.com/api/5e635afafbd17b86/animatedradar" + nearbyStation + ".gif?radius=100&width=400&height=400&rainsnow=1&newmaps=1";
+
+			$.ajax({
+
+				url: localData,
+				dataType: "jsonp",
+				success: function(weatherData){
+					var mainHeading = $(
+						"<li>" + weatherData.current_observation.display_location.full +
+						"<p>" + weatherData.current_observation.observation_time + "<p></li>"
+					);
+					
+					var temperatureSection = $(
+						"<li><h1>" + weatherData.current_observation.temp_f + "</h1>" +
+						"<h2>" + weatherData.current_observation.weather + "</h2>" +
+						"<h4>Feels Like: " + weatherData.current_observation.feelslike_string + " | " + "Heat Index: " + weatherData.current_observation.heat_index_string + "</h4></li>"
+					);
+					
+					
+					var localVariables = $(
+						"<div class='ui-block-a><div class='ui-body ui-body-d'>Wind: " + weatherData.current_observation.wind_string + "</div></div>" +
+						"<div class='ui-block-b><div class='ui-body ui-body-d'>Humidity: " + weatherData.current_observation.relative_humidity + "</div></div>" +
+						"<div class='ui-block-a><div class='ui-body ui-body-d'>UV Index: " + weatherData.current_observation.UV + "</div></div>" +
+						"<div class='ui-block-b><div class='ui-body ui-body-d'>Visibility: " + weatherData.current_observation.visibility_mi + "</div></div>" +
+						"<div class='ui-block-a><div class='ui-body ui-body-d'>Dew Point: " + weatherData.current_observation.dewpoint_string + "</div></div>" +
+						"<div class='ui-block-b><div class='ui-body ui-body-d'>Pressure: " + weatherData.current_observation.pressure_in + "</div></div>"
+					);
+					
+					var radarImg = $(
+						"<li><img src=" + radar + "/></li>"
+					);
+
+					$("#weatherMain").append(mainHeading);
+					$("#tempMain").append(temperatureSection);
+					$("#localVars").append(localVariables);
+					$("#radarImage").append(radarImg);
+				}
+			});
+
+		}
+	});
+
+};
+
+var onGeoFailure = function (){
+
+	alert("Current Location Not Found.");
+
 };
