@@ -39,6 +39,7 @@
                     <ul data-role="listview" data-ajax="false" data-inset="true" class="mainNav" data-theme="a">
 	                    <li data-role="list-divider">Mash-Ups</li>
 	                    <li><a href="#weatherByLoc">Weather by Geolocation</a></li>
+	                    <li><a href="#mapByLoc">Google Map by Geolocation</a></li>
                     </ul>
                     <ul data-role="listview" data-ajax="false" data-inset="true" class='mainNav' data-theme="a">
                         <li data-role="list-divider">Research</li>
@@ -133,31 +134,36 @@
 		                <a href="#" data-role="button" id="saveContact">Add Contact</a>
 	                </div>
                 </section> <!-- End of Content -->
-            </section> <!-- End of Contacts Page -->  
-            
-            
-            <!-- Weather Page -->
-
-		<section id="weatherByLoc" data-role="page" style="background:transparent;">
-			<div data-role="header" data-position="fixed" data-add-back-btn="true">
-				<a href="#" data-rel="back">Back</a><h1>Weather & Geolocation</h1>
-			</div>
-			<section data-role="content" id="weatherData">
-				<ul id="weatherMain"></ul>
-			
-				<ul id="tempMain"></ul>
-				<div class="ui-grid-a ui-responsive" id="localVars"></div>
-				<ul id="radarImage"></ul>
-			</section>
-		</section>
-            
-            
-            
-            
-            
-            
-            
-                     
+            </section> <!-- End of Contacts Page -->              
+            <!-- Weather by Geolocation Page -->
+			<section id="weatherByLoc" data-role="page">
+				<div data-role="header" data-position="fixed" data-add-back-btn="true">
+					<a href="#" data-rel="back">Back</a><h1>Weather & Geolocation</h1>
+				</div>
+				<section data-role="content" id="weatherData" style="background:black;">
+					<ul id="weatherMain"></ul>
+					<ul id="tempMain"></ul>
+				<!--	<div class="ui-grid-a" id="localVars"></div> -->
+					<div class="ui-grid-a" id="localVars">
+					    <div class="ui-block-a"><div class="ui-bar ui-bar-c" style="height:30px" id="wind">Block A</div></div>
+					    <div class="ui-block-b"><div class="ui-bar ui-bar-c" style="height:30px" id="humidity">Block B</div></div>
+					    <div class="ui-block-a"><div class="ui-bar ui-bar-c" style="height:30px" id="uv">Block A</div></div>
+					    <div class="ui-block-b"><div class="ui-bar ui-bar-c" style="height:30px" id="visibility">Block B</div></div>
+					    <div class="ui-block-a"><div class="ui-bar ui-bar-c" style="height:30px" id="dewpoint">Block A</div></div>
+					    <div class="ui-block-b"><div class="ui-bar ui-bar-c" style="height:30px" id="pressure">Block B</div></div>
+					</div><!-- /grid-a -->
+					<ul id="radarImage"></ul>
+				</section>
+			</section> <!-- End of Weather by Geolocation Page -->
+			<!-- Maps by Geolocation Page -->
+			<section id="mapByLoc" data-role="page" style="background:transparent;">
+				<div data-role="header" data-position="fixed" data-add-back-btn="true">
+					<a href="#" data-rel="back">Back</a><h1>Maps & Geolocation</h1>
+				</div>
+				<section data-role="content" id="mapData">
+					<div id="map"></div>
+				</section>
+			</section> <!-- End of Maps by Geolocation -->                    
             <!-- Week 1 Research -->
             <section id="week1" data-role="page" style="background:transparent;">
                 <div data-role="header" data-position="fixed" data-add-back-btn="true">
@@ -217,6 +223,7 @@
         <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.3.1.min.js"></script>
         <script type="text/javascript" src="js/libs/jquery.validate.min.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
         <script type="text/javascript" src="js/main.js"></script>
     </body>
 </html>

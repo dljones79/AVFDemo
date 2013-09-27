@@ -16,6 +16,7 @@ function onDeviceReady() {
         $("#geolocate").on("pageinit", displayLocation);
         $("#saveContact").on("click", saveContact);
         $("#weatherByLoc").on("pageinit", weatherLoad);
+        $("#mapByLoc").on("pageinit", getLocForMap);
 }; // phonegap deviceready
 
 // Function to get pictures from Instagram API
@@ -223,15 +224,33 @@ var weatherByLoc = function(currentLocation){
 						"<h4>Feels Like: " + weatherData.current_observation.feelslike_string + " | " + "Heat Index: " + weatherData.current_observation.heat_index_string + "</h4></li>"
 					);
 					
-					
+			/*		
 					var localVariables = $(
-						"<div class='ui-block-a><div class='ui-body ui-body-d'>Wind: " + weatherData.current_observation.wind_string + "</div></div>" +
-						"<div class='ui-block-b><div class='ui-body ui-body-d'>Humidity: " + weatherData.current_observation.relative_humidity + "</div></div>" +
-						"<div class='ui-block-a><div class='ui-body ui-body-d'>UV Index: " + weatherData.current_observation.UV + "</div></div>" +
-						"<div class='ui-block-b><div class='ui-body ui-body-d'>Visibility: " + weatherData.current_observation.visibility_mi + "</div></div>" +
-						"<div class='ui-block-a><div class='ui-body ui-body-d'>Dew Point: " + weatherData.current_observation.dewpoint_string + "</div></div>" +
-						"<div class='ui-block-b><div class='ui-body ui-body-d'>Pressure: " + weatherData.current_observation.pressure_in + "</div></div>"
+						"<div class='ui-block-a><div class='ui-bar ui-bar-e'>Wind: " + weatherData.current_observation.wind_string + "</div></div>" +
+						"<div class='ui-block-b><div class='ui-bar ui-bar-e'>Humidity: " + weatherData.current_observation.relative_humidity + "</div></div>" +
+						"<div class='ui-block-a><div class='ui-bar ui-bar-e'>UV Index: " + weatherData.current_observation.UV + "</div></div>" +
+						"<div class='ui-block-b><div class='ui-bar ui-bar-e'>Visibility: " + weatherData.current_observation.visibility_mi + "</div></div>" +
+						"<div class='ui-block-a><div class='ui-bar ui-bar-e'>Dew Point: " + weatherData.current_observation.dewpoint_string + "</div></div>" +
+						"<div class='ui-block-b><div class='ui-bar ui-bar-e'>Pressure: " + weatherData.current_observation.pressure_in + "</div></div>"
 					);
+			*/		
+					var wind = document.getElementById('wind');
+					wind.innerHTML = "Wind: " + weatherData.current_observation.wind_string;
+					
+					var humidity = document.getElementById('humidity');
+					humidity.innerHTML = "Humidity: " + weatherData.current_observation.relative_humidity;
+					
+					var uv = document.getElementById('uv');
+					uv.innerHTML = "UV: " + weatherData.current_observation.UV;
+					
+					var vis = document.getElementById('visibility');
+					vis.innerHTML = "Visibility: " + weatherData.current_observation.visibility_mi + " miles.";
+					
+					var dew = document.getElementById('dewpoint');
+					dew.innerHTML = "Dew Point: " + weatherData.current_observation.dewpoint_string;
+					
+					var pressure = document.getElementById('pressure');
+					pressure.innerHTML = "Pressure: " + weatherData.current_observation.pressure_in;
 					
 					var radarImg = $(
 						"<li><img src=" + radar + "/></li>"
@@ -239,7 +258,7 @@ var weatherByLoc = function(currentLocation){
 
 					$("#weatherMain").append(mainHeading);
 					$("#tempMain").append(temperatureSection);
-					$("#localVars").append(localVariables);
+			//		$("#localVars").append(localVariables);
 					$("#radarImage").append(radarImg);
 				}
 			});
@@ -254,3 +273,43 @@ var onGeoFailure = function (){
 	alert("Current Location Not Found.");
 
 };
+
+///// Map by Geolocation
+
+var getLocForMap = function(){
+	navigator.geolocation.getCurrentPosition(mapByLoc, onGeoFailure);	
+};
+
+var mapByLoc = function(currentLocation){
+	var mapLat = currentLocation.coords.latitude; 
+	var mapLon = currentLocation.coords.longitude;
+	
+	var center = mapLat + "," + mapLon;
+	
+	var localMap = '<img src="http://maps.google.com/maps/api/staticmap?center=' + center + '&zoom=11&size=600x800&markers=color:red|31.4211,35.1144&sensor=false">"';
+	
+	$("#map").append(localMap);	
+};
+
+/*
+var getLocForMap = function(){
+	navigator.geolocation.getCurrentPosition(mapByLoc, onGeoFailure);
+};
+
+var mapByLoc = function(){
+	var mapLat = currentLocation.coords.latitude; 
+	var mapLon = currentLocation.coords.longitude;
+	
+	var localMap = $(
+		"<li><img src='http://maps.googleapis.com/maps/api/staticmap" +
+			"?center=" + mapLat + "," + mapLon + 
+			"&zoom=12" +
+			"&size=400x400" +
+			"&maptype=hybrid" +
+			"&markers=color:red|31.4211,35.1144" +
+			"&sensor=false'" + 
+			" /></li>"
+	);
+	$("#map").append(localMap);	
+};
+*/

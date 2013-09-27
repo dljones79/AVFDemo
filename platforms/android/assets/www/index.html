@@ -36,12 +36,18 @@
                         <li><a href="#weather">Weather</a></li>
                         <li><a href="#insta">Instagram</a></li>
                     </ul>
+                    <ul data-role="listview" data-ajax="false" data-inset="true" class="mainNav" data-theme="a">
+	                    <li data-role="list-divider">Mash-Ups</li>
+	                    <li><a href="#weatherByLoc">Weather by Geolocation</a></li>
+	                    <li><a href="#mapByLoc">Google Map by Geolocation</a></li>
+                    </ul>
                     <ul data-role="listview" data-ajax="false" data-inset="true" class='mainNav' data-theme="a">
                         <li data-role="list-divider">Research</li>
                         <li><a href="#week1">Week One: Industry Research and Project Intent</a></li>
                         <li><a href="#week2">Week Two: Research</a></li>
                         <li><a href="">Week Three: Research</a></li>
                     </ul>
+                    
                 </section>
             </section> <!-- End of Home section -->
             <!-- Instagram Page -->
@@ -96,11 +102,68 @@
 	            	<div data-role="controlgroup">
 					    <a href="#" onclick="visualAlert(); return false;" data-role="button">Show An Alert Message</a>
 					    <a href="#" onclick="sounds(); return false;" data-role="button">Make Some Noise</a>
-					    <a href="#" onclick="shakes(); return false;" data-role="button">Shake Your MoneyMaker</a>
+					   <!-- <a href="#" onclick="shakes(); return false;" data-role="button">Shake Your MoneyMaker</a> -->
 					</div>
 	            </section> <!-- End of content for notification page -->
             </section> <!-- End of Notification Page -->
-                        
+            <!-- Contacts Page -->
+            <section id="contacts" data-role="page" style="background:transparent;">
+	            <div data-role="header" data-position="fixed" data-add-back-btn="true">
+                    <a href="#" data-rel="back">Back</a><h1>Contacts</h1>
+                </div>
+                <section data-role="content">
+	                <form>
+		                <section data-role="fieldcontain">
+			                <label for="firstName">First Name:</label>
+			                <input type="text" name="firstName" id="firstName" placeholder="First Name" />
+		                </section>
+		                <section data-role="fieldcontain">
+			                <label for="lastName">Last Name:</label>
+			                <input type="text" name="lastName" id="lastName" placeholder="Last Name" />
+		                </section>
+		                <section data-role="fieldcontain">
+			                <label for="phoneNumber">Phone Number:</label>
+			                <input type="number" name="phoneNumber" id="phoneNumber" placeholder="1234567890" />
+		                </section>
+		                <section data-role="fieldcontain">
+			                <label for="email">eMail: </label>
+			                <input type="email" name="email" id="email" placeholder="xxxxx@xxxx.com" />
+		                </section>
+	                </form>
+	                <div>
+		                <a href="#" data-role="button" id="saveContact">Add Contact</a>
+	                </div>
+                </section> <!-- End of Content -->
+            </section> <!-- End of Contacts Page -->              
+            <!-- Weather by Geolocation Page -->
+			<section id="weatherByLoc" data-role="page">
+				<div data-role="header" data-position="fixed" data-add-back-btn="true">
+					<a href="#" data-rel="back">Back</a><h1>Weather & Geolocation</h1>
+				</div>
+				<section data-role="content" id="weatherData" style="background:black;">
+					<ul id="weatherMain"></ul>
+					<ul id="tempMain"></ul>
+				<!--	<div class="ui-grid-a" id="localVars"></div> -->
+					<div class="ui-grid-a" id="localVars">
+					    <div class="ui-block-a"><div class="ui-bar ui-bar-c" style="height:30px" id="wind">Block A</div></div>
+					    <div class="ui-block-b"><div class="ui-bar ui-bar-c" style="height:30px" id="humidity">Block B</div></div>
+					    <div class="ui-block-a"><div class="ui-bar ui-bar-c" style="height:30px" id="uv">Block A</div></div>
+					    <div class="ui-block-b"><div class="ui-bar ui-bar-c" style="height:30px" id="visibility">Block B</div></div>
+					    <div class="ui-block-a"><div class="ui-bar ui-bar-c" style="height:30px" id="dewpoint">Block A</div></div>
+					    <div class="ui-block-b"><div class="ui-bar ui-bar-c" style="height:30px" id="pressure">Block B</div></div>
+					</div><!-- /grid-a -->
+					<ul id="radarImage"></ul>
+				</section>
+			</section> <!-- End of Weather by Geolocation Page -->
+			<!-- Maps by Geolocation Page -->
+			<section id="mapByLoc" data-role="page" style="background:transparent;">
+				<div data-role="header" data-position="fixed" data-add-back-btn="true">
+					<a href="#" data-rel="back">Back</a><h1>Maps & Geolocation</h1>
+				</div>
+				<section data-role="content" id="mapData">
+					<div id="map"></div>
+				</section>
+			</section> <!-- End of Maps by Geolocation -->                    
             <!-- Week 1 Research -->
             <section id="week1" data-role="page" style="background:transparent;">
                 <div data-role="header" data-position="fixed" data-add-back-btn="true">
@@ -160,6 +223,7 @@
         <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.3.1.min.js"></script>
         <script type="text/javascript" src="js/libs/jquery.validate.min.js"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
         <script type="text/javascript" src="js/main.js"></script>
     </body>
 </html>

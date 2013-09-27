@@ -79,4 +79,9 @@
     <access origin="http://*.instagram.com" />
     <access origin="https://*.instagram.com" />
     <access origin="http://*.wunderground.com" />
+    <access origin="http://maps.google.com" />
+    <access origin="https://maps.google.com" />
+    <access origin="http://*.google.com" />
+    <access origin="http://www.googleapis.com" />
+    <access origin="http://*googleapis.com" />
 </widget>

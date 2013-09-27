@@ -51,4 +51,13 @@
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="http://127.0.0.1*" />
+    <access origin="*" />
+    <access origin="http://*.instagram.com" />
+    <access origin="https://*.instagram.com" />
+    <access origin="http://*.wunderground.com" />
+    <access origin="http://maps.google.com" />
+    <access origin="https://maps.google.com" />
+    <access origin="http://*.google.com" />
+    <access origin="http://www.googleapis.com" />
+    <access origin="http://*googleapis.com" />
 </widget>
