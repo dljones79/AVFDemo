@@ -72,7 +72,71 @@ li:first-child{
 	
 	li:first-child{
 		background: rgba(200, 255, 255, 0.80) !important;
-	}	
+	}
+	
+	#weatherMain {
+		background: transparent !important;
+		padding: 0px;
+		text-align: center;
+		border-color: black;
+		color: white;
+	}
+	#weatherMain li {
+		background: transparent !important;
+		font-size: xx-large;
+		font-family: fantasy;
+	}
+	
+	#weatherMain p {
+		background: transparent;
+		font-size: x-small;
+	}
+	
+	#tempMain {
+		background: transparent !important;
+		padding: 0px;
+		border-color: black;
+		list-style: none;
+		color: white;
+	}
+	#tempMain li {
+		background: transparent !important;
+	}
+	
+	#tempMain li h1 {
+		font-weight: bold;
+		font-size: x-large;
+	}
+	
+	#tempMain li h2 {
+		font-size: smaller;
+	}
+	
+	#tempMain li h4 {
+		font-size: x-small;
+	}
+	
+	#radarImage {
+		background: black !important;
+		text-align: center;
+		list-style: none;
+		padding: 15px;
+		margin: auto;
+	}
+	
+	#radarImage li {
+		background: black !important;
+	}
+	
+	#localVars {
+		text-align: center;
+	}
+	
+	#map {
+		text-align: center;
+		margin-top: auto;
+		margin-bottom: auto;
+	}
 }
 
 /* For landscape layouts only */
@@ -108,5 +172,69 @@ li:first-child{
 	
 	li:first-child{
 		background: rgba(200, 255, 255, 0.80) !important;
+	}
+	
+	#weatherMain {
+		background: transparent !important;
+		padding: 0px;
+		text-align: center;
+		border-color: black;
+		color: white;
+	}
+	#weatherMain li {
+		background: transparent !important;
+		font-size: xx-large;
+		font-family: fantasy;
+	}
+	
+	#weatherMain p {
+		background: transparent;
+		font-size: x-small;
+	}
+	
+	#tempMain {
+		background: transparent !important;
+		padding: 0px;
+		border-color: black;
+		list-style: none;
+		color: white;
+	}
+	#tempMain li {
+		background: transparent !important;
+	}
+	
+	#tempMain li h1 {
+		font-weight: bold;
+		font-size: x-large;
+	}
+	
+	#tempMain li h2 {
+		font-size: smaller;
+	}
+	
+	#tempMain li h4 {
+		font-size: x-small;
+	}
+	
+	#radarImage {
+		background: black !important;
+		text-align: center;
+		list-style: none;
+		padding: 15px;
+		margin: auto;
+	}
+	
+	#radarImage li {
+		background: black !important;
+	}
+	
+	#localVars {
+		text-align: center;
+	}
+	
+	#map {
+		text-align: center;
+		margin-top: auto;
+		margin-bottom: auto;
 	}
 }
